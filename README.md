@@ -9,17 +9,6 @@
 #  - - -
 # База данных системы управления складом с отслеживанием товарных остатков
 # REST API на базе Python + FastAPI + SQLite + SQLAlchemy
-
-# Структура проекта:
-warehouse_api
-1)main.py - точка входа FastAPI
-2)database.py - подключение к БД
-3)models.py - модели таблиц
-4)schemas.py - схемы API
-5)crud.py - функции работы с БД
-6)requirements.txt - зависимости
-7)warehouse.db - файл базы данных (создается автоматически)
-
 # ER-диаграмма
           +-------------------+
           |     Products      | Товары
@@ -70,110 +59,30 @@ warehouse_api
 # Команды для взаимодействия с БД
 1. Создание товара - Добавляет новый товар в базу данных.
 POST /products/
-Параметры:
-{
-  "name": "string",
-  "description": "string",
-  "sku": "string"
-}
 2. Получение списка товаров - Возвращает список всех товаров.
 GET /products/
 3. Создание склада - Создает новый склад.
 POST /warehouses/
-Параметры:
-{
-  "name": "string",
-  "location": "string"
-}
 4. Изменение количества товара - Добавляет или уменьшает количество товара на складе.
-Параметры:
-{
-  "product_id": 1,
-  "warehouse_id": 1,
-  "quantity": 10
-}
-Примечание:
-положительное число → добавление
-отрицательное число → списание
+POST /stocks/change
 5. Получение остатков - Возвращает текущие остатки товаров на складах.
 GET /stocks/
-
 # Примеры команд API
 # 1. Проверка API
 Команда:
 GET http://127.0.0.1:8000/
-Ответ:
-{
-  "message": "Warehouse API is running"
-}
 # 2. Создание товара
 Команда:
 POST http://127.0.0.1:8000/products/
-Тело запроса:
-{
-  "name": "Ноутбук Lenovo",
-  "description": "ThinkPad X1 Carbon",
-  "sku": "LENOVO001"
-}
-Ответ:
-{
-  "id": 1,
-  "name": "Ноутбук Lenovo",
-  "description": "ThinkPad X1 Carbon",
-  "sku": "LENOVO001"
-}
 # 3. Создание склада
 Команда:
 POST http://127.0.0.1:8000/warehouses/
-Тело:
-{
-  "name": "Основной склад",
-  "location": "Москва"
-}
-Ответ:
-{
-  "id": 1,
-  "name": "Основной склад",
-  "location": "Москва"
-}
 # 4. Добавление товара на склад
 Команда:
 POST http://127.0.0.1:8000/stocks/change
-Тело:
-{
-  "product_id": 1,
-  "warehouse_id": 1,
-  "quantity": 50
-}
-Ответ:
-{
-  "product_id": 1,
-  "warehouse_id": 1,
-  "quantity": 50
-}
 # 5. Списание товара
 Команда:
 POST http://127.0.0.1:8000/stocks/change
-Тело:
-{
-  "product_id": 1,
-  "warehouse_id": 1,
-  "quantity": -10
-}
-Ответ:
-{
-  "product_id": 1,
-  "warehouse_id": 1,
-  "quantity": 40
-}
 # 6. Получение остатков
 Команда:
 GET http://127.0.0.1:8000/stocks/
-Ответ:
-[
-  {
-    "product_id": 1,
-    "warehouse_id": 1,
-    "quantity": 40
-  }
-]          
