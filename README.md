@@ -9,6 +9,7 @@
 #  - - -
 # База данных системы управления складом с отслеживанием товарных остатков
 # REST API на базе Python + FastAPI + SQLite + SQLAlchemy
+
 # Структура проекта:
 warehouse_api
 1)main.py - точка входа FastAPI
@@ -18,6 +19,7 @@ warehouse_api
 5)crud.py - функции работы с БД
 6)requirements.txt - зависимости
 7)warehouse.db - файл базы данных (создается автоматически)
+
 # ER-диаграмма
           +-------------------+
           |     Products      | Товары
