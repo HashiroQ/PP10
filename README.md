@@ -176,4 +176,4 @@ GET http://127.0.0.1:8000/stocks/
     "warehouse_id": 1,
     "quantity": 40
   }
-]
+]          
