@@ -11,13 +11,13 @@
 # REST API на базе Python + FastAPI + SQLite + SQLAlchemy
 # Структура проекта:
 warehouse_api/
-main.py              # точка входа FastAPI
-database.py          # подключение к БД
-models.py            # модели таблиц
-schemas.py           # схемы API
-crud.py              # функции работы с БД
-requirements.txt     # зависимости
-warehouse.db         # файл базы данных (создается автоматически)
+main.py               точка входа FastAPI
+database.py           подключение к БД
+models.py             модели таблиц
+schemas.py            схемы API
+crud.py               функции работы с БД
+requirements.txt      зависимости
+warehouse.db          файл базы данных (создается автоматически)
 # ER-диаграмма
           +-------------------+
           |     Products      | Товары
